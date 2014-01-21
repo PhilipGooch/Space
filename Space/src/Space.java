@@ -5,14 +5,6 @@ import java.util.ArrayList;
 
 public class Space extends JPanel implements ActionListener{
 	
-	//CONTROLS:
-	
-	//LEFT = W
-	//RIGHT = D
-	//THRUST = W
-	//FIRE = SPACE
-	//RESET = SPACE
-	
 	public static final int width = 1356;
 	public static final int height = 762;
 	
@@ -22,7 +14,7 @@ public class Space extends JPanel implements ActionListener{
 		Space s = new Space();
 		j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		j.setSize(width, height);
-		j.add(s);							//have to add before other stuff for some reason
+		j.add(s);				
 		j.setLocationRelativeTo(null);
 		j.setResizable(false);
 		j.setVisible(true);
@@ -139,7 +131,6 @@ public class Space extends JPanel implements ActionListener{
 					}
 					lasers.remove(i);
 					meteors.remove(j);
-					
 				}
 			}
 		}
@@ -186,14 +177,11 @@ public class Space extends JPanel implements ActionListener{
 		if(!gameover){
 			g.drawPolygon(s.xp, s.yp, 4);
 		}
-//		g.fillOval((int) s.x,(int) s.y, 2, 2);
 		for(int i = 0; i < lasers.size(); i++){
 			g.drawLine((int) lasers.get(i).x, (int) lasers.get(i).y, (int) lasers.get(i).xend, (int) lasers.get(i).yend);
 		}
 		for(int i = 0; i < meteors.size(); i++){
-//			g.drawPolygon(m.xp, m.yp, 8);
 			g.drawOval((int) (meteors.get(i).x - meteors.get(i).r), (int) (meteors.get(i).y - meteors.get(i).r), meteors.get(i).r * 2, meteors.get(i).r * 2);
-//			g.fillOval((int) m.x,(int) m.y, 2, 2);
 		}
 		g.drawString("score: " + score, 1250, 40);
 	}
